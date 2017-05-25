@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang= "en-Us">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title> Star Wars RPG </title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+ <link rel= "stylesheet" type= "text/css" href="assets/style.css" > 
+
+ <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+  <div class= "container"> 
+    <h1 class= "jumbotron"> Star Wars RPG</h1>
+      <div class= "characters row col-lg-9 col-md-9 col-sm-10 col-xs-11">
+        <h2> Choose your character </h2>
+          <div class= "image">
+            <img id= "anakin" src= "assets/images/anakin.PNG" alt="anakin" style= "height: 180px; width: 180px;"> 
+            <span id= "healtha"> health: </span>
+          </div>  
+          <div class= "image">
+            <img id= "obi" src= "assets/images/obi.JPG" alt="obi" style= "height: 180px; width: 180px;"> 
+            <span id = "healtho"> health: </span>
+          </div>
+          <div class= "image">
+            <img id= "general" src= "assets/images/general.JPG" alt="general" style= "height: 180px; width: 180px;"> 
+            <span id = "healthg"> health: </span>
+          </div>
+
+      </div>
+
+      <div class= "selected row col-lg-8 col-md-9 col-sm-10 col-xs-11">
+        <h3> Your Hero </h3>
+          <!-- <span class= "health"> Health : </span> -->
+          <button class= "attack btn btn-lg btn-danger"> Attack </button>
+      </div>
+
+      <div class= "defenders row col-lg-8 col-md-9 col-sm-10 col-xs-11">
+        <h3> Defenders </h3>
+        <!-- <span class= "health"> Health : </span> -->
+      </div>
+
+
+
+  </div>
+  <script type= "text/javascript" src="assets/game.js"> </script>
+</body>

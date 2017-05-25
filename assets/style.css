@@ -1,0 +1,16 @@
+span { 
+   position: absolute; 
+   top: 10px; 
+   left: 0; 
+   width: 100%; 
+   color: red;
+   font-size: 1.2rem;
+   font-weight: bold;
+}
+
+.image { 
+   position: relative; 
+   width: 30%;
+   float: left; 
+
+ }
