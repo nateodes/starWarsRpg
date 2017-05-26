@@ -3,14 +3,16 @@
 var anakin = {
 	hero: "anakin",
 	health: 200,
-	
+	damaged: false,
 	charSelect: false,
 
-	// attack:  
+	  
 	attack: function() {
           
           var strength = Math.floor(Math.random() * 50) +1;
-          console.log("Your attack was: " + strength)
+          console.log("Your attack was: " + strength);
+          return strength;
+          
           
         },
 
@@ -18,6 +20,7 @@ var anakin = {
           
           var defend = Math.floor(Math.random() * 35) +1;
           console.log("Your counter was: " + defend)
+          return defend; 
         },
 }
 
@@ -26,13 +29,14 @@ var anakin = {
 var obi = {
 	hero: "obi",
 	health: 250,
-	
+	damaged: false,
 	charSelect: false,
 
 	attack: function() {
           
           var strength = Math.floor(Math.random() * 40) +1;
           console.log("Your attack was: " + strength)
+          return strength; 
           
         },
 
@@ -40,6 +44,8 @@ var obi = {
           
           var defend = Math.floor(Math.random() * 50) +1;
           console.log("Your counter was: " + defend)
+          return defend; 
+          
         },
 	
 }
@@ -47,13 +53,15 @@ var obi = {
 var general = {
 	hero: "general",
 	health: 300,
-
+	damaged: false,
 	charSelect: false,
 
 	attack: function() {
           
           var strength = Math.floor(Math.random() * 60) +1;
-          console.log("Your attack was: " + strength)
+          console.log("Your attack was: " + strength);
+          return strength;
+
           
         },
 	
@@ -61,6 +69,7 @@ var general = {
           
           var defend = Math.floor(Math.random() * 25) +1;
           console.log("Your counter was: " + defend)
+          return defend; 
         },
 }
 
@@ -78,7 +87,7 @@ $("#anakin").on("click", function () {
 	
 	$("#anakin").clone().appendTo(".selected");
 	$("#anakin").attr("0");
-	this.charSelect = true;
+	anakin.charSelect = true;
 	// $("#healtha").text("health: " + health);
 	
 	$("#obi").clone().appendTo(".defenders");
@@ -95,7 +104,7 @@ $("#anakin").on("click", function () {
 $("#obi").on("click", function () {
 	var health = 250;
 	$("#obi").clone().appendTo(".selected");
-	this.charSelect = true;
+	obi.charSelect = true;
 	$("#healtho").text("health: " + health);
 	$("#anakin").clone().appendTo(".defenders");
 	$("#general").clone().appendTo(".defenders");
@@ -106,7 +115,7 @@ $("#obi").on("click", function () {
 $("#general").on("click", function () {
 	var health = 300;
 	$("#general").clone().appendTo(".selected");
-	this.charSelect = true;
+	general.charSelect = true;
 	$("#healthg").text("health: " + health);
 	$("#obi").clone().appendTo(".defenders");
 	$("#anakin").clone().appendTo(".defenders");
@@ -117,16 +126,55 @@ $("#general").on("click", function () {
 // Create Attack Function
 
 $(".attack").on("click", function () {
-	var attacker = $(".selected");
-	var attack = Math.floor(Math.random() * 50) +1;
-	var counter = Math.floor(Math.random() * 35) +1;
-	console.log("Attack ", attack);
-	console.log("Counter ", counter);
-		if (($(".selected").attr("0")) === true, this.health > 0) {
-			var newHealth = this.health - counter;
-			$(".selected").html(newHealth);
-			console.log(newHealth);
+	var attacker = anakin.hero;
+	var defender = obi.hero;
+	var attackerHealth; 
+	var defenderHealth;
+	
+		if (anakin.damaged == true || obi.damaged == true || general.damaged == true) {
+			
+			
+			var x = anakin.attack();
+			var y = obi.counter();
+			var q = anakin.health;
 
+			var damagedHealth = q - y;
+			$("#healtha").html(damagedHealth);
+			console.log(damagedHealth);
+			anakin.health = damagedHealth;
 		}
+
+		if (attacker === "anakin" && defender === "obi" && anakin.damaged == false) {
+			
+			
+			var x = anakin.attack();
+			var y = obi.counter();
+			var z = anakin.health;
+
+			var newHealth = z - y; 
+			// var health = $("#health");
+			// 	health.value -= y;
+			anakin.damaged = true;
+			obi.damaged = true;
+			$("#healtha").html(newHealth);
+			console.log(newHealth);
+			anakin.health = newHealth;
+			
+			
+			}
+		// if (attacker === "anakin" && defender === "obi" && anakin.health !== 200 || obi.health !== 250 || general.health !== 300) {
+
+		// 	var x = anakin.attack();
+		// 	var y = obi.counter();
+		// 	// var healthLeft = $("#healtha");
+		// 	var healthLeft = attackerHealth - y;
+			
+		// 	// newHealth = attackerHealth;
+		// 	// var healthLeft = newHealth - y; 
+		// 	$("#healtha").html(healthLeft);
+		// 	console.log(healthLeft);
+			
+
+		// }
 
 } )
