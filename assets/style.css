@@ -19,3 +19,18 @@ span {
 	background-color:  black;
 	font-family: 'Poller One', cursive;
 }
+
+.defender {
+	border-color: red;
+	border: 2px solid red;
+}
+
+.wins {
+   float: right;
+   margin-bottom: 5px;
+   color: gold;
+}
+
+.chosen {
+   border: 2px solid green;
+}
