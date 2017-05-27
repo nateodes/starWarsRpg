@@ -15,7 +15,7 @@ var anakin = {
 	  
 	attack: function() {
           
-          var strength = Math.floor(Math.random() * 150) +1;
+          var strength = Math.floor(Math.random() * 50) +1;
           console.log("Your attack was: " + strength);
           return strength;
           
@@ -24,7 +24,7 @@ var anakin = {
 
     counter: function() {
           
-          var defend = Math.floor(Math.random() * 35) +1;
+          var defend = Math.floor(Math.random() * 65) +1;
           console.log("Your counter was: " + defend)
           return defend; 
         },
@@ -41,7 +41,7 @@ var obi = {
 
 	attack: function() {
           
-          var strength = Math.floor(Math.random() * 40) +1;
+          var strength = Math.floor(Math.random() * 50) +1;
           console.log("Your attack was: " + strength)
           return strength; 
           
@@ -66,7 +66,7 @@ var general = {
 
 	attack: function() {
           
-          var strength = Math.floor(Math.random() * 60) +1;
+          var strength = Math.floor(Math.random() * 160) +1;
           console.log("Your attack was: " + strength);
           return strength;
 
@@ -117,7 +117,7 @@ $("#obi").on("click", function () {
 	$("#obi").addClass("chosen");
 	$("#anakin").clone().appendTo(".defenders");
 	anakin.defender = true; 
-
+	$("#anakin").addClass("defender");
 	$("#general").clone().appendTo(".defenders");
 	// general.defender = false;
 }
@@ -131,7 +131,7 @@ $("#general").on("click", function () {
 	$("#general").addClass("chosen");
 	$("#obi").clone().appendTo(".defenders");
 	obi.defender = true;
-	
+	$("#obi").addClass("defender");
 	$("#anakin").clone().appendTo(".defenders");
 	// anakin.defender = true;
 }
@@ -249,7 +249,7 @@ $(".attack").on("click", function () {
 		}
 		// If Anakin beats Obi
 		if (anakin.charSelect === true && obi.health < 0 && obi.defender === true) {
-			alert("You have slain your teacher, good work");
+			alert("You have slain your teacher, good work, your powers are growing!");
 			//Change defenders
 			obi.defender = false;
 			obi.damaged = false;
@@ -258,7 +258,7 @@ $(".attack").on("click", function () {
 			$("#general").addClass("defender");
 			$("#obi").animate({ opacity: "0.05" });
 			//Reset health
-			anakin.health = 200;
+			anakin.health = 260;
 			$("#healtha").html(anakin.health);	
 		}
 
@@ -537,17 +537,17 @@ $(".attack").on("click", function () {
 		}
 		// If General beats Obi
 		if (general.charSelect === true && obi.health < 0 && obi.defender === true) {
-			alert("You have defeated a great Jedi Master");
+			alert("You have defeated a great Jedi Master, but he cut off one of your crazy arms!");
 			//Change defenders
 			obi.defender = false;
 			general.damaged = false;
 			anakin.defender = true;
 			obi.damaged = false;
-			
+			$("#anakin").addClass("defender");
 			$("#anakin").addClass("defender");
 			$("#obi").animate({ opacity: "0.05" });
 			//Reset health
-			general.health = 300;
+			general.health = 250;
 			$("#healthg").html(anakin.health);	
 		}
 
@@ -565,6 +565,11 @@ $(".attack").on("click", function () {
 			wins++;
 			$("#anakin").animate({ opacity: "0.05" });	
 			$(".wins").html("<h2> Wins: " + wins + "<h2>");
+			var t = $("#myAudio"); 
+
+				function playAudio() { 
+   				 t.play(); 
+				} 
 		}
 
 
@@ -573,5 +578,40 @@ $(".attack").on("click", function () {
 
 
 /// Create Reset Button -------------------------------------
+// Reset all character classes and stats
+$(".reset").on("click", function () {
 
+	anakin.health = 200;
+	anakin.damaged = false;
+	anakin.charSelect = false;
+	anakin.defender = false;
 
+	obi.health = 250;
+	obi.damaged = false;
+	obi.charSelect = false;
+	obi.defender = false;
+
+	general.health = 300;
+	general.damaged = false;
+	general.charSelect = false;
+	general.defender = false;
+
+	$("#healtha").html(anakin.health);
+	$("#healtho").html(obi.health);
+	$("#healthg").html(general.health);
+
+	$(".defenders").remove();
+	
+	$("#anakin").removeClass("chosen");
+	$("#anakin").removeClass("defender");
+
+	$("#obi").removeClass("chosen");
+	$("#obi").removeClass("defender");
+
+	$("#general").removeClass("chosen");
+	$("#general").removeClass("defender");
+
+	$("#anakin").animate({ opacity: "1" });
+	$("#obi").animate({ opacity: "1" });
+	$("#general").animate({ opacity: "1" });
+})

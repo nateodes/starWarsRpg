@@ -34,3 +34,8 @@ span {
 .chosen {
    border: 2px solid green;
 }
+
+.reset {
+   color: white;
+   background-color: grey;
+}
