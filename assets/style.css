@@ -16,8 +16,10 @@ span {
  }
 
  body {
-	background-color:  black;
+	background-image: url("images/trooper.JPG");
 	font-family: 'Poller One', cursive;
+   background-position: auto;
+   background-repeat: no-repeat;
 }
 
 .defender {
@@ -38,4 +40,43 @@ span {
 .reset {
    color: white;
    background-color: grey;
+}
+
+
+
+@media screen {
+   max-width: 960px; 
+   body {
+         background-color: #333;
+      }
+}
+
+@media screen {
+   max-width: 768px;
+      body {
+         background-color: #333;
+      }
+   
+}
+
+@media screen {
+   max-width: 640px;
+   body {
+         background-image: url("images/vader.JPG");
+         background-position: auto;
+         background-repeat: no-repeat;
+         color: #ceebfd;
+      }
+}
+@media screen and (max-width: 768px) {
+  /* The body's bg color will be #333 */
+  body {
+    background-image: url("images/vader.JPG");
+    background-position: auto;
+    background-repeat: no-repeat;
+    color: #ceebfd;
+  }
+
+progress {
+   height: 15px;
 }

@@ -16,29 +16,35 @@
 
 <body>
   <div class= "container"> 
-    <div class= "jumbotron">
-    <h1> Star Wars RPG</h1>
-      <div class= "wins"> </div>
-      </div>
+    
+    <h1 class= "h1"> Star Wars RPG</h1>
+      <div class= "wins small"> </div>
+      
       <div class= "characters row col-lg-9 col-md-9 col-sm-10 col-xs-11">
         <h2> Choose your character </h2>
+          <div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+    <span class="sr-only">45% Complete</span>
+  </div>
+</div>
           <div class= "image image1">
             <img id= "anakin" src= "assets/images/anakin.PNG" alt="anakin" style= "height: 180px; width: 180px;"> 
-            <span id= "healtha"> health: </span> <progress id="health" value="200" max="200"></progress>
+            <span id= "healtha"> health: </span> <progress class= "progress-bar-striped" id="health1" value="200" max="200" style= "width: 200;"></progress>
           </div>  
-          <div class= "image image2">
+          <div class= "image image2">s
             <img id= "obi" src= "assets/images/obi.JPG" alt="obi" style= "height: 180px; width: 180px;"> 
-            <span id = "healtho"> health: </span> <progress id="health" value="250" max="250"></progress>
+            <span id = "healtho"> health: </span> <progress class= "progress-bar-striped" id="health2" value="250" max="250" style= "width: 450;"></progress>
           </div>
           <div class= "image image3">
             <img id= "general" src= "assets/images/general2.JPG" alt="general" style= "height: 180px; width: 180px;"> 
-            <span id = "healthg"> health: </span> <progress id="health" value="300" max="300"></progress>
+            <span id = "healthg"> health: </span> <progress class= "progress-bar-striped" id="health3" value="300" max="300" style= "width: 300;"></progress>
           </div>
 
       </div>
 
       <div class= "selected row col-lg-8 col-md-9 col-sm-10 col-xs-11">
         <h3> Your Hero </h3>
+
           <!-- <span class= "health"> Health : </span> -->
           <button class= "attack btn btn-lg btn-danger"> Attack </button>
           <button class= "reset btn btn-sm"><span class= "glyphicon glyphicon-refresh"> Reset </span></button>

@@ -66,7 +66,7 @@ var general = {
 
 	attack: function() {
 
-		var strength = Math.floor(Math.random() * 160) +1;
+		var strength = Math.floor(Math.random() * 60) +1;
 		console.log("Your attack was: " + strength);
 		return strength;
 
@@ -127,7 +127,7 @@ if (anakin.charSelect === false && general.charSelect === false && obi.charSelec
 	$("#obi").on("click", function () {
 		audioBlasters.play();
 		$(".image2").animate({top: '+=250px'}, 2000);
-		$(".image2").animate({left: '+=150px'}, 4000);
+		
 
 	// $("#obi").clone().appendTo(".selected");
 	obi.charSelect = true;
@@ -177,6 +177,7 @@ if (anakin.charSelect === false && obi.charSelect === false && general.charSelec
 
 $(".attack").on("click", function () {
 
+$(".alert .alert-success .alert-danger .alert-warning").hide();
 // Run through game as Anankin 	
 audioSaber.play();
 		//Anakin beat Obi, now General is defender
@@ -203,6 +204,8 @@ audioSaber.play();
 			general.health = defenderHealth;
 			console.log("defenders health is " + defenderHealth);
 			
+			$("#health1").animate({value: newHealth}, "very slow");
+			$("#health3").animate({value: defenderHealth}, "very slow");
 			
 		}
 
@@ -222,7 +225,11 @@ audioSaber.play();
 		anakin.health = damagedHealth;
 		$("#healthg").html(damagedDefender);
 		general.health = damagedDefender;
+
+		$("#health1").animate({value: damagedHealth}, "very slow");
+		$("#health3").animate({value: damagedDefender}, "very slow");
 	}
+	
 	if (anakin.damaged == true && obi.damaged == true) {
 
 
@@ -237,6 +244,9 @@ audioSaber.play();
 		anakin.health = damagedHealth;
 		$("#healtho").html(damagedDefender);
 		obi.health = damagedDefender;
+
+		$("#health1").animate({value: damagedHealth}, "very slow");
+		$("#health2").animate({value: damagedDefender}, "very slow");
 	}
 	//Anakin as attacker and Obi as first defender
 	if (anakin.charSelect === true && obi.defender === true && anakin.damaged === false && obi.damaged === false) {
@@ -250,8 +260,7 @@ audioSaber.play();
 		var newHealth = z - y; 
 		var defenderHealth = a - x;
 
-		var health = $("#health");
-		health.value -= y;
+		
 		anakin.damaged = true;
 		obi.damaged = true;
 		$("#healtha").html(newHealth);
@@ -262,7 +271,8 @@ audioSaber.play();
 		obi.health = defenderHealth;
 		console.log("defenders health is " + defenderHealth);
 
-
+		$("#health1").animate({value: newHealth}, "very slow");
+		$("#health2").animate({value: defenderHealth}, "very slow");
 	}
 
 	
@@ -271,12 +281,15 @@ audioSaber.play();
 	if (anakin.charSelect === true && anakin.health < 0) {
 		alert("Anakin has been slain, try again!");
 		console.log("anakin lost");
+
 		anakin.charSelect = false;
 		obi.defender = false;
+		
 		$(".attack").animate({ opacity: "0.05" });
 		$(".image1").animate({top: '-=250px'}, 2000);
 		$(".image3").animate({right: '+=100px'}, 2000);
-
+		
+		$("#health1").animate({value: anakin.health}, "very slow");
 
 	}
 		// If Anakin beats Obi
@@ -293,6 +306,8 @@ audioSaber.play();
 			anakin.health = 260;
 			$("#healtha").html(anakin.health);
 			$(".image2").animate({top: '-=500px'}, 2000);
+
+			$("#health1").animate({value: anakin.health}, "very slow");
 		}
 
 		
@@ -312,6 +327,7 @@ audioSaber.play();
 			$(".image1").animate({top: '-=250px'}, 2000);
 			$(".image1").animate({right: '+=100px'}, 2000);
 			$(".image3").animate({top: '-=500px'}, 2000);
+			audio.play();
 		}
 
 // Run through game as Obi ------------------------------------------
@@ -341,7 +357,8 @@ if (obi.charSelect === true && general.defender === true && obi.damaged === fals
 	general.health = defenderHealth;
 	console.log("defenders health is " + defenderHealth);
 
-
+	$("#health2").animate({value: newHealth}, "very slow");
+	$("#health3").animate({value: defenderHealth}, "very slow");
 }
 
 
@@ -363,6 +380,9 @@ if (obi.charSelect === true && general.defender === true && obi.damaged === fals
 		obi.health = damagedHealth;
 		$("#healthg").html(damagedDefender);
 		general.health = damagedDefender;
+
+		$("#health2").animate({value: damagedHealth}, "very slow");
+		$("#health3").animate({value: damagedDefender}, "very slow");
 	}
 
 		//Both characters damaged
@@ -383,6 +403,9 @@ if (obi.charSelect === true && general.defender === true && obi.damaged === fals
 			obi.health = damagedHealth;
 			$("#healtha").html(damagedDefender);
 			anakin.health = damagedDefender;
+
+			$("#health2").animate({value: damagedHealth}, "very slow");
+			$("#health1").animate({value: damagedDefender}, "very slow");
 		}
 
 
@@ -411,7 +434,8 @@ if (obi.charSelect === true && general.defender === true && obi.damaged === fals
 		anakin.health = defenderHealth;
 		console.log("defenders health is " + defenderHealth);
 
-
+		$("#health2").animate({value: newHealth}, "very slow");
+		$("#health1").animate({value: defenderHealth}, "very slow");
 	}
 
 	
@@ -441,7 +465,8 @@ if (obi.charSelect === true && general.defender === true && obi.damaged === fals
 			//Reset health
 			obi.health = 250;
 			$("#healtha").html(anakin.health);
-			$(".image1").animate({top: '-=500px'}, 2000);	
+			$(".image1").animate({top: '-=500px'}, 2000);
+			$("#health1").animate({value: obi.health}, "very slow");	
 		}
 
 		
@@ -490,7 +515,8 @@ if (general.charSelect === true && anakin.defender === true && general.damaged =
 	anakin.health = defenderHealth;
 	console.log("defenders health is " + defenderHealth);
 
-
+	$("#health3").animate({value: newHealth}, "very slow");
+	$("#health1").animate({value: defenderHealth}, "very slow");
 }
 
 
@@ -512,6 +538,9 @@ if (general.charSelect === true && anakin.defender === true && general.damaged =
 		general.health = damagedHealth;
 		$("#healtha").html(damagedDefender);
 		anakin.health = damagedDefender;
+
+		$("#health3").animate({value: damagedHealth}, "very slow");
+		$("#health1").animate({value: damagedDefender}, "very slow");
 	}
 
 		//General against Obi Both characters damaged
@@ -532,6 +561,9 @@ if (general.charSelect === true && anakin.defender === true && general.damaged =
 			general.health = damagedHealth;
 			$("#healtho").html(damagedDefender);
 			obi.health = damagedDefender;
+
+			$("#health3").animate({value: damagedHealth}, "very slow");
+			$("#health2").animate({value: damagedDefender}, "very slow");
 		}
 
 
@@ -560,7 +592,8 @@ if (general.charSelect === true && anakin.defender === true && general.damaged =
 		obi.health = defenderHealth;
 		console.log("defenders health is " + defenderHealth);
 
-
+		$("#health3").animate({value: newHealth}, "very slow");
+		$("#health2").animate({value: defenderHealth}, "very slow");
 	}
 
 	
@@ -593,6 +626,7 @@ if (general.charSelect === true && anakin.defender === true && general.damaged =
 			$("#healthg").html(anakin.health);	
 			$(".image2").animate({top: '-=500px'}, 2000);
 
+			$("#health1").animate({value: general.health}, "very slow");
 		}
 
 		
