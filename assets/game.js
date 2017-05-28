@@ -12,22 +12,22 @@ var anakin = {
 	damaged: false,
 	charSelect: false,
 	defender: false,
-	  
-	attack: function() {
-          
-          var strength = Math.floor(Math.random() * 50) +1;
-          console.log("Your attack was: " + strength);
-          return strength;
-          
-          
-        },
 
-    counter: function() {
-          
-          var defend = Math.floor(Math.random() * 65) +1;
-          console.log("Your counter was: " + defend)
-          return defend; 
-        },
+	attack: function() {
+
+		var strength = Math.floor(Math.random() * 50) +1;
+		console.log("Your attack was: " + strength);
+		return strength;
+
+
+	},
+
+	counter: function() {
+
+		var defend = Math.floor(Math.random() * 65) +1;
+		console.log("Your counter was: " + defend)
+		return defend; 
+	},
 }
 
 
@@ -40,20 +40,20 @@ var obi = {
 	defender: false,
 
 	attack: function() {
-          
-          var strength = Math.floor(Math.random() * 50) +1;
-          console.log("Your attack was: " + strength)
-          return strength; 
-          
-        },
 
-    counter: function() {
-          
-          var defend = Math.floor(Math.random() * 50) +1;
-          console.log("Your counter was: " + defend)
-          return defend; 
-          
-        },
+		var strength = Math.floor(Math.random() * 50) +1;
+		console.log("Your attack was: " + strength)
+		return strength; 
+
+	},
+
+	counter: function() {
+
+		var defend = Math.floor(Math.random() * 50) +1;
+		console.log("Your counter was: " + defend)
+		return defend; 
+
+	},
 	
 }
 
@@ -65,78 +65,108 @@ var general = {
 	defender: false,
 
 	attack: function() {
-          
-          var strength = Math.floor(Math.random() * 160) +1;
-          console.log("Your attack was: " + strength);
-          return strength;
 
-          
-        },
+		var strength = Math.floor(Math.random() * 160) +1;
+		console.log("Your attack was: " + strength);
+		return strength;
+
+
+	},
 	
 	counter: function() {
-          
-          var defend = Math.floor(Math.random() * 25) +1;
-          console.log("Your counter was: " + defend)
-          return defend; 
-        },
+
+		var defend = Math.floor(Math.random() * 25) +1;
+		console.log("Your counter was: " + defend)
+		return defend; 
+	},
 }
 
+//Sound effects
 
 
-$("#healtho").text("health: " + obi.health);
-$("#healthg").text("health: " + general.health);
-$("#healtha").text("health: " + anakin.health);
+// General Wins aka Vader music
+var audio = new Audio(src= "assets/images/music.MP3") 
+ //Attack sound
+ var audioSaber = new Audio(src= "assets/images/saber.MP3")
+
+ var audioBlasters = new Audio(src= "assets/images/blasters.MP3")
+
+ $("#healtho").text("health: " + obi.health);
+ $("#healthg").text("health: " + general.health);
+ $("#healtha").text("health: " + anakin.health);
+ audioSaber.play();
+
 
 //Create function to select character
 
+if (general.charSelect === false && obi.charSelect === false && anakin.charSelect === false) {
+	$("#anakin").on("click", function () {
+		audioBlasters.play();
 
-$("#anakin").on("click", function () {
-	
-	
-	$("#anakin").clone().appendTo(".selected");
-	
+	// $("#anakin").clone().appendTo(".selected");
+	$(".image1").animate({top: '+=250px'}, 2000);
+	$(".image1").animate({left: '+=250px'}, 4000);
 	anakin.charSelect = true;
 	$("#anakin").addClass("chosen");
 	
-	$("#obi").clone().appendTo(".defenders");
+	$(".image2").animate({top: '+=500px'}, 2000);
+	// $("#obi").clone().appendTo(".defenders");
 	$("#obi").addClass("defender");
 	obi.defender = true;
 
-	$("#general").clone().appendTo(".defenders");
+	// $("#general").clone().appendTo(".defenders");
+	$(".image3").animate({top: '+=500px'}, 2000);
 	
-	// general.defender = true;
 
 }
 )
-;
+};
 
-$("#obi").on("click", function () {
-	
-	$("#obi").clone().appendTo(".selected");
+
+if (anakin.charSelect === false && general.charSelect === false && obi.charSelect === false) {
+	$("#obi").on("click", function () {
+		audioBlasters.play();
+		$(".image2").animate({top: '+=250px'}, 2000);
+		$(".image2").animate({left: '+=150px'}, 4000);
+
+	// $("#obi").clone().appendTo(".selected");
 	obi.charSelect = true;
 	$("#obi").addClass("chosen");
-	$("#anakin").clone().appendTo(".defenders");
+	
+	$(".image1").animate({top: '+=500px'}, 2000);
+	// $("#anakin").clone().appendTo(".defenders");
 	anakin.defender = true; 
 	$("#anakin").addClass("defender");
-	$("#general").clone().appendTo(".defenders");
-	// general.defender = false;
+
+	$(".image3").animate({top: '+=500px'}, 2000);
+	$(".image3").animate({right: '+=100px'}, 4000);
+	// $("#general").clone().appendTo(".defenders");
+	
 }
 )
-;
+};
 
-$("#general").on("click", function () {
-	
-	$("#general").clone().appendTo(".selected");
+if (anakin.charSelect === false && obi.charSelect === false && general.charSelect === false) {
+	$("#general").on("click", function () {
+		audioBlasters.play();
+		$(".image3").animate({top: '+=250px'}, 2000);
+		$(".image3").animate({right: '+=100px'}, 4000);
+
+	// $("#general").clone().appendTo(".selected");
 	general.charSelect = true;
 	$("#general").addClass("chosen");
-	$("#obi").clone().appendTo(".defenders");
+
+	$(".image2").animate({top: '+=500px'}, 2000);
+	// $("#obi").clone().appendTo(".defenders");
 	obi.defender = true;
 	$("#obi").addClass("defender");
-	$("#anakin").clone().appendTo(".defenders");
-	// anakin.defender = true;
+	
+	$(".image1").animate({top: '+=500px'}, 2000);
+	// $("#anakin").clone().appendTo(".defenders");
+	
 }
 )
-;
+};
 
 
 
@@ -148,7 +178,7 @@ $("#general").on("click", function () {
 $(".attack").on("click", function () {
 
 // Run through game as Anankin 	
-		
+audioSaber.play();
 		//Anakin beat Obi, now General is defender
 		if (anakin.charSelect === true && general.defender === true && anakin.damaged === false) {
 
@@ -157,7 +187,7 @@ $(".attack").on("click", function () {
 			var y = general.counter();
 			var z = anakin.health;
 			var a = general.health;
-		
+
 			var newHealth = z - y; 
 			var defenderHealth = a - x;
 
@@ -178,22 +208,22 @@ $(".attack").on("click", function () {
 
 
 	// After player has been damaged 
-		if (anakin.damaged === true && general.damaged === true) {
+	if (anakin.damaged === true && general.damaged === true) {
 
 
-			var x = anakin.attack();
-			var y = general.counter();
-			var q = anakin.health;
-			var a = general.health;
-			var damagedHealth = q - y;
-			var damagedDefender = a - x;
-			$("#healtha").html(damagedHealth);
-			console.log(damagedHealth);
-			anakin.health = damagedHealth;
-			$("#healthg").html(damagedDefender);
-			general.health = damagedDefender;
+		var x = anakin.attack();
+		var y = general.counter();
+		var q = anakin.health;
+		var a = general.health;
+		var damagedHealth = q - y;
+		var damagedDefender = a - x;
+		$("#healtha").html(damagedHealth);
+		console.log(damagedHealth);
+		anakin.health = damagedHealth;
+		$("#healthg").html(damagedDefender);
+		general.health = damagedDefender;
 	}
-		if (anakin.damaged == true && obi.damaged == true) {
+	if (anakin.damaged == true && obi.damaged == true) {
 
 
 		var x = anakin.attack();
@@ -220,33 +250,35 @@ $(".attack").on("click", function () {
 		var newHealth = z - y; 
 		var defenderHealth = a - x;
 
-			var health = $("#health");
-			health.value -= y;
-			anakin.damaged = true;
-			obi.damaged = true;
-			$("#healtha").html(newHealth);
-			console.log(newHealth);
-			anakin.health = newHealth;
+		var health = $("#health");
+		health.value -= y;
+		anakin.damaged = true;
+		obi.damaged = true;
+		$("#healtha").html(newHealth);
+		console.log(newHealth);
+		anakin.health = newHealth;
 
-			$("#healtho").html(defenderHealth);
-			obi.health = defenderHealth;
-			console.log("defenders health is " + defenderHealth);
-			
-			
-		}
-		
+		$("#healtho").html(defenderHealth);
+		obi.health = defenderHealth;
+		console.log("defenders health is " + defenderHealth);
+
+
+	}
+
 	
 
 	// When Anakin dies
-		if (anakin.charSelect === true && anakin.health < 0) {
-			alert("Anakin has been slain, try again!");
-			console.log("anakin lost");
-			anakin.charSelect = false;
-			obi.defender = false;
-			$(".attack").animate({ opacity: "0.05" });
+	if (anakin.charSelect === true && anakin.health < 0) {
+		alert("Anakin has been slain, try again!");
+		console.log("anakin lost");
+		anakin.charSelect = false;
+		obi.defender = false;
+		$(".attack").animate({ opacity: "0.05" });
+		$(".image1").animate({top: '-=250px'}, 2000);
+		$(".image3").animate({right: '+=100px'}, 2000);
 
 
-		}
+	}
 		// If Anakin beats Obi
 		if (anakin.charSelect === true && obi.health < 0 && obi.defender === true) {
 			alert("You have slain your teacher, good work, your powers are growing!");
@@ -259,7 +291,8 @@ $(".attack").on("click", function () {
 			$("#obi").animate({ opacity: "0.05" });
 			//Reset health
 			anakin.health = 260;
-			$("#healtha").html(anakin.health);	
+			$("#healtha").html(anakin.health);
+			$(".image2").animate({top: '-=500px'}, 2000);
 		}
 
 		
@@ -276,79 +309,82 @@ $(".attack").on("click", function () {
 			wins++;
 			$("#general").animate({ opacity: "0.05" });	
 			$(".wins").html("<h2> Wins: " + wins + "<h2>");
+			$(".image1").animate({top: '-=250px'}, 2000);
+			$(".image1").animate({right: '+=100px'}, 2000);
+			$(".image3").animate({top: '-=500px'}, 2000);
 		}
 
 // Run through game as Obi ------------------------------------------
 
 //Obi beat Anakin, now General is defender
-		if (obi.charSelect === true && general.defender === true && obi.damaged === false) {
+if (obi.charSelect === true && general.defender === true && obi.damaged === false) {
 
 
-			var x = obi.attack();
-			var y = general.counter();
-			
-			var z = obi.health;
-			var a = general.health;
-		
-			var newHealth = z - y; 
-			var defenderHealth = a - x;
+	var x = obi.attack();
+	var y = general.counter();
 
-			var health = $("#health");
-			health.value -= y;
-			obi.damaged = true;
-			general.damaged = true;
-			$("#healtho").html(newHealth);
-			console.log(newHealth);
-			obi.health = newHealth;
+	var z = obi.health;
+	var a = general.health;
 
-			$("#healthg").html(defenderHealth);
-			general.health = defenderHealth;
-			console.log("defenders health is " + defenderHealth);
-			
-			
-		}
+	var newHealth = z - y; 
+	var defenderHealth = a - x;
+
+	var health = $("#health");
+	health.value -= y;
+	obi.damaged = true;
+	general.damaged = true;
+	$("#healtho").html(newHealth);
+	console.log(newHealth);
+	obi.health = newHealth;
+
+	$("#healthg").html(defenderHealth);
+	general.health = defenderHealth;
+	console.log("defenders health is " + defenderHealth);
+
+
+}
 
 
 	// After players has been damaged 
-		if (obi.damaged === true && general.damaged === true && obi.charSelect === true) {
+	if (obi.damaged === true && general.damaged === true && obi.charSelect === true) {
 
 
-			var x = obi.attack();
-			var y = general.counter();
-			
-			var q = obi.health;
-			var a = general.health;
-			
-			var damagedHealth = q - y;
-			var damagedDefender = a - x;
-			
-			$("#healtho").html(damagedHealth);
-			console.log(damagedHealth);
-			obi.health = damagedHealth;
-			$("#healthg").html(damagedDefender);
-			general.health = damagedDefender;
+		var x = obi.attack();
+		var y = general.counter();
+
+		var q = obi.health;
+		var a = general.health;
+
+		var damagedHealth = q - y;
+		var damagedDefender = a - x;
+
+		$("#healtho").html(damagedHealth);
+		console.log(damagedHealth);
+		obi.health = damagedHealth;
+		$("#healthg").html(damagedDefender);
+		general.health = damagedDefender;
 	}
-		
+
 		//Both characters damaged
 		if (obi.damaged === true && anakin.damaged === true && obi.charSelect === true) {
 
 
-		var x = obi.attack();
-		var y = anakin.counter();
-		
-		var q = obi.health;
-		var a = anakin.health;
-		
-		var damagedHealth = q - y;
-		var damagedDefender = a - x;
-		
-		$("#healtho").html(damagedHealth);
-		console.log(damagedHealth);
-		obi.health = damagedHealth;
-		$("#healtha").html(damagedDefender);
-		anakin.health = damagedDefender;
-	}
-	
+			var x = obi.attack();
+			var y = anakin.counter();
+
+			var q = obi.health;
+			var a = anakin.health;
+
+			var damagedHealth = q - y;
+			var damagedDefender = a - x;
+
+			$("#healtho").html(damagedHealth);
+			console.log(damagedHealth);
+			obi.health = damagedHealth;
+			$("#healtha").html(damagedDefender);
+			anakin.health = damagedDefender;
+		}
+
 
 	//Obi as attacker and Anakin as first defender
 	if (obi.charSelect === true && anakin.defender === true && anakin.damaged === false && obi.damaged === false) {
@@ -363,33 +399,34 @@ $(".attack").on("click", function () {
 		var newHealth = z - y; 
 		var defenderHealth = a - x;
 
-			var health = $("#health");
-			health.value -= y;
-			anakin.damaged = true;
-			obi.damaged = true;
-			$("#healtho").html(newHealth);
-			console.log(newHealth);
-			obi.health = newHealth;
+		var health = $("#health");
+		health.value -= y;
+		anakin.damaged = true;
+		obi.damaged = true;
+		$("#healtho").html(newHealth);
+		console.log(newHealth);
+		obi.health = newHealth;
 
-			$("#healtha").html(defenderHealth);
-			anakin.health = defenderHealth;
-			console.log("defenders health is " + defenderHealth);
-			
-			
-		}
-		
+		$("#healtha").html(defenderHealth);
+		anakin.health = defenderHealth;
+		console.log("defenders health is " + defenderHealth);
+
+
+	}
+
 	
 
 	// If Obi dies
-		if (obi.charSelect === true && obi.health < 0) {
-			alert("Obi Wan has been slain, don't let the Jedi down!");
-			console.log("Obi lost");
-			obi.charSelect = false;
-			anakin.defender = false;
-			$(".attack").animate({ opacity: "0.05" });
+	if (obi.charSelect === true && obi.health < 0) {
+		alert("Obi Wan has been slain, don't let the Jedi down!");
+		console.log("Obi lost");
+		obi.charSelect = false;
+		anakin.defender = false;
+		$(".attack").animate({ opacity: "0.05" });
+		$(".image2").animate({top: '-=250px'}, 2000);
 
 
-		}
+	}
 		// If Obi beats Anakin
 		if (obi.charSelect === true && anakin.health < 0 && anakin.defender === true) {
 			alert("You have slain your student, aka Future Vader, good job!");
@@ -403,7 +440,8 @@ $(".attack").on("click", function () {
 			$("#obi").animate({ opacity: "0.05" });
 			//Reset health
 			obi.health = 250;
-			$("#healtha").html(anakin.health);	
+			$("#healtha").html(anakin.health);
+			$(".image1").animate({top: '-=500px'}, 2000);	
 		}
 
 		
@@ -420,80 +458,82 @@ $(".attack").on("click", function () {
 			wins++;
 			$("#general").animate({ opacity: "0.05" });	
 			$(".wins").html("<h2> Wins: " + wins + "<h2>");
+			$(".image2").animate({top: '-=250px'}, 2000);
+			$(".image3").animate({top: '-=500px'}, 2000);
 		}
 
 
 // Play game as General --------------------------------------
 
 //General beat Obi, now Anakin is defender
-		if (general.charSelect === true && anakin.defender === true && general.damaged === false) {
+if (general.charSelect === true && anakin.defender === true && general.damaged === false) {
 
 
-			var x = general.attack();
-			var y = anakin.counter();
-			
-			var z = general.health;
-			var a = anakin.health;
-		
-			var newHealth = z - y; 
-			var defenderHealth = a - x;
+	var x = general.attack();
+	var y = anakin.counter();
 
-			var health = $("#health");
-			health.value -= y;
-			anakin.damaged = true;
-			general.damaged = true;
-			$("#healthg").html(newHealth);
-			console.log(newHealth);
-			general.health = newHealth;
+	var z = general.health;
+	var a = anakin.health;
 
-			$("#healtha").html(defenderHealth);
-			anakin.health = defenderHealth;
-			console.log("defenders health is " + defenderHealth);
-			
-			
-		}
+	var newHealth = z - y; 
+	var defenderHealth = a - x;
+
+	var health = $("#health");
+	health.value -= y;
+	anakin.damaged = true;
+	general.damaged = true;
+	$("#healthg").html(newHealth);
+	console.log(newHealth);
+	general.health = newHealth;
+
+	$("#healtha").html(defenderHealth);
+	anakin.health = defenderHealth;
+	console.log("defenders health is " + defenderHealth);
+
+
+}
 
 
 	// After players has been damaged 
-		if (general.damaged === true && anakin.damaged === true && general.charSelect === true) {
+	if (general.damaged === true && anakin.damaged === true && general.charSelect === true) {
 
 
-			var x = general.attack();
-			var y = anakin.counter();
-			
-			var q = general.health;
-			var a = anakin.health;
-			
-			var damagedHealth = q - y;
-			var damagedDefender = a - x;
-			
-			$("#healthg").html(damagedHealth);
-			console.log(damagedHealth);
-			general.health = damagedHealth;
-			$("#healtha").html(damagedDefender);
-			anakin.health = damagedDefender;
+		var x = general.attack();
+		var y = anakin.counter();
+
+		var q = general.health;
+		var a = anakin.health;
+
+		var damagedHealth = q - y;
+		var damagedDefender = a - x;
+
+		$("#healthg").html(damagedHealth);
+		console.log(damagedHealth);
+		general.health = damagedHealth;
+		$("#healtha").html(damagedDefender);
+		anakin.health = damagedDefender;
 	}
-		
+
 		//General against Obi Both characters damaged
 		if (general.damaged === true && obi.damaged === true && general.charSelect === true) {
 
 
-		var x = general.attack();
-		var y = obi.counter();
-		
-		var q = general.health;
-		var a = obi.health;
-		
-		var damagedHealth = q - y;
-		var damagedDefender = a - x;
-		
-		$("#healthg").html(damagedHealth);
-		console.log(damagedHealth);
-		general.health = damagedHealth;
-		$("#healtho").html(damagedDefender);
-		obi.health = damagedDefender;
-	}
-	
+			var x = general.attack();
+			var y = obi.counter();
+
+			var q = general.health;
+			var a = obi.health;
+
+			var damagedHealth = q - y;
+			var damagedDefender = a - x;
+
+			$("#healthg").html(damagedHealth);
+			console.log(damagedHealth);
+			general.health = damagedHealth;
+			$("#healtho").html(damagedDefender);
+			obi.health = damagedDefender;
+		}
+
 
 	//General as attacker and Obi as first defender
 	if (general.charSelect === true && obi.defender === true && general.damaged === false && obi.damaged === false) {
@@ -508,33 +548,35 @@ $(".attack").on("click", function () {
 		var newHealth = z - y; 
 		var defenderHealth = a - x;
 
-			var health = $("#health");
-			health.value -= y;
-			general.damaged = true;
-			obi.damaged = true;
-			$("#healthg").html(newHealth);
-			console.log(newHealth);
-			general.health = newHealth;
+		var health = $("#health");
+		health.value -= y;
+		general.damaged = true;
+		obi.damaged = true;
+		$("#healthg").html(newHealth);
+		console.log(newHealth);
+		general.health = newHealth;
 
-			$("#healtho").html(defenderHealth);
-			obi.health = defenderHealth;
-			console.log("defenders health is " + defenderHealth);
-			
-			
-		}
-		
+		$("#healtho").html(defenderHealth);
+		obi.health = defenderHealth;
+		console.log("defenders health is " + defenderHealth);
+
+
+	}
+
 	
 
 	// If General dies
-		if (general.charSelect === true && general.health < 0) {
-			alert("The General has been lost, it's ok he's just a droid");
-			console.log("General lost");
-			general.charSelect = false;
-			obi.defender = false;
-			$(".attack").animate({ opacity: "0.05" });
+	if (general.charSelect === true && general.health < 0) {
+		alert("The General has been lost, it's ok he's just a droid");
+		console.log("General lost");
+		general.charSelect = false;
+		obi.defender = false;
+		$(".attack").animate({ opacity: "0.05" });
+		$(".image3").animate({top: '-=250px'}, 2000);
+		$(".image3").animate({left: '+=100px'}, 2000);
 
 
-		}
+	}
 		// If General beats Obi
 		if (general.charSelect === true && obi.health < 0 && obi.defender === true) {
 			alert("You have defeated a great Jedi Master, but he cut off one of your crazy arms!");
@@ -549,10 +591,12 @@ $(".attack").on("click", function () {
 			//Reset health
 			general.health = 250;
 			$("#healthg").html(anakin.health);	
+			$(".image2").animate({top: '-=500px'}, 2000);
+
 		}
 
 		
-		// If General beats the Anakin
+		// If General beats Anakin
 		if (general.charSelect === true && anakin.health < 0) {
 			alert("You have slain the Jedi, now you do whatever droids with light sabers do");
 			general.health = 300;
@@ -565,11 +609,12 @@ $(".attack").on("click", function () {
 			wins++;
 			$("#anakin").animate({ opacity: "0.05" });	
 			$(".wins").html("<h2> Wins: " + wins + "<h2>");
-			var t = $("#myAudio"); 
-
-				function playAudio() { 
-   				 t.play(); 
-				} 
+			// playAudio()
+			console.log("play music");
+			audio.play();
+			$(".image3").animate({top: '-=250px'}, 1000);
+			$(".image3").animate({left: '+=100px'}, 1000);
+			$(".image1").animate({top: '-=500px'}, 2000); 
 		}
 
 
@@ -614,4 +659,6 @@ $(".reset").on("click", function () {
 	$("#anakin").animate({ opacity: "1" });
 	$("#obi").animate({ opacity: "1" });
 	$("#general").animate({ opacity: "1" });
+
+	audio.pause();
 })
