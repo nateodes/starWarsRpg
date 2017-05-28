@@ -325,7 +325,7 @@ audioSaber.play();
 			$("#general").animate({ opacity: "0.05" });	
 			$(".wins").html("<h2> Wins: " + wins + "<h2>");
 			$(".image1").animate({top: '-=250px'}, 2000);
-			$(".image1").animate({right: '+=100px'}, 2000);
+			$(".image1").animate({right: '+=200px'}, 2000);
 			$(".image3").animate({top: '-=500px'}, 2000);
 			audio.play();
 		}
@@ -695,4 +695,8 @@ $(".reset").on("click", function () {
 	$("#general").animate({ opacity: "1" });
 
 	audio.pause();
+
+	$(".image1").animate({top: '20', left: '20'}, 2000);
+	$(".image2").animate({top: '20', left: '90'}, 2000);
+	$(".image3").animate({top: '20', left: '130'}, 2000);
 })
