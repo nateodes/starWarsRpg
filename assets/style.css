@@ -16,7 +16,7 @@ span {
  }
 
  body {
-	background-image: url("images/trooper.JPG");
+	background-image: url("images/trooper.jpg");
 	font-family: 'Poller One', cursive;
    background-position: auto;
    background-repeat: no-repeat;
@@ -62,7 +62,7 @@ span {
 @media screen {
    max-width: 640px;
    body {
-         background-image: url("images/vader.JPG");
+         background-image: url("images/vader.jpg");
          background-position: auto;
          background-repeat: no-repeat;
          color: #ceebfd;
