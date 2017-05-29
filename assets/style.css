@@ -3,7 +3,7 @@ span {
    top: 10px; 
    left: 0; 
    width: 100%; 
-   color: red;
+   color: tomato;
    font-size: 1.2rem;
    font-weight: bold;
 }
@@ -20,6 +20,7 @@ span {
 	font-family: 'Poller One', cursive;
    background-position: auto;
    background-repeat: no-repeat;
+   background-size: auto;
 }
 
 .defender {
@@ -42,7 +43,17 @@ span {
    background-color: grey;
 }
 
+footer {
+   background: hsl(225, 64%, 27%);
+   
+   width: 100%;
+   padding-top: 50px;
+   font-size: 2.0rem;
+   bottom: 0;
+   height: auto;
+   padding-bottom: 250px;
 
+}
 
 @media screen {
    max-width: 960px; 
@@ -77,6 +88,16 @@ span {
     color: #ceebfd;
   }
 
-progress {
+.bar {
    height: 15px;
+   color: red;
+}
+
+h3 {
+   color: #ffff33;
+   font-style: bold;
+}
+
+button {
+   border: 2px solid black;
 }

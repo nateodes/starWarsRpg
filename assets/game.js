@@ -83,18 +83,18 @@ var general = {
 
 //Sound effects
 
+var audioOpen = new Audio(src= "assets/images/song.MP3")
 
 // General Wins aka Vader music
 var audio = new Audio(src= "assets/images/music.MP3") 
  //Attack sound
  var audioSaber = new Audio(src= "assets/images/saber.MP3")
-
  var audioBlasters = new Audio(src= "assets/images/blasters.MP3")
 
  $("#healtho").text("health: " + obi.health);
  $("#healthg").text("health: " + general.health);
  $("#healtha").text("health: " + anakin.health);
- audioSaber.play();
+ audioOpen.play();
 
 
 //Create function to select character
@@ -102,7 +102,7 @@ var audio = new Audio(src= "assets/images/music.MP3")
 if (general.charSelect === false && obi.charSelect === false && anakin.charSelect === false) {
 	$("#anakin").on("click", function () {
 		audioBlasters.play();
-
+	audioOpen.pause();
 	// $("#anakin").clone().appendTo(".selected");
 	$(".image1").animate({top: '+=250px'}, 2000);
 	$(".image1").animate({left: '+=250px'}, 4000);
@@ -127,7 +127,7 @@ if (anakin.charSelect === false && general.charSelect === false && obi.charSelec
 	$("#obi").on("click", function () {
 		audioBlasters.play();
 		$(".image2").animate({top: '+=250px'}, 2000);
-		
+		audioOpen.pause();
 
 	// $("#obi").clone().appendTo(".selected");
 	obi.charSelect = true;
@@ -151,7 +151,7 @@ if (anakin.charSelect === false && obi.charSelect === false && general.charSelec
 		audioBlasters.play();
 		$(".image3").animate({top: '+=250px'}, 2000);
 		$(".image3").animate({right: '+=100px'}, 4000);
-
+		audioOpen.pause();
 	// $("#general").clone().appendTo(".selected");
 	general.charSelect = true;
 	$("#general").addClass("chosen");
@@ -699,4 +699,10 @@ $(".reset").on("click", function () {
 	$(".image1").animate({top: '20', left: '20'}, 2000);
 	$(".image2").animate({top: '20', left: '90'}, 2000);
 	$(".image3").animate({top: '20', left: '130'}, 2000);
+
+	$("#health1").animate({value: anakin.health}, "very slow");
+	$("#health2").animate({value: obi.health}, "very slow");
+	$("#health3").animate({value: general.health}, "very slow");
+
+
 })
