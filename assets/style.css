@@ -62,7 +62,7 @@ span {
 @media screen {
    max-width: 640px;
    body {
-         background-image: url("images/vader.jpg");
+         background-image: url("images/background2.jpg");
          background-position: auto;
          background-repeat: no-repeat;
          color: #ceebfd;
@@ -71,7 +71,7 @@ span {
 @media screen and (max-width: 768px) {
   /* The body's bg color will be #333 */
   body {
-    background-image: url("images/vader.jpg");
+    background-image: url("images/background2s.jpg");
     background-position: auto;
     background-repeat: no-repeat;
     color: #ceebfd;
