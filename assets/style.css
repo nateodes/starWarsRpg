@@ -71,7 +71,7 @@ span {
 @media screen and (max-width: 768px) {
   /* The body's bg color will be #333 */
   body {
-    background-image: url("images/vader.JPG");
+    background-image: url("images/vader.jpg");
     background-position: auto;
     background-repeat: no-repeat;
     color: #ceebfd;
