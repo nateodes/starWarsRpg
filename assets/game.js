@@ -83,13 +83,13 @@ var general = {
 
 //Sound effects
 
-var audioOpen = new Audio(src= "assets/images/song.MP3")
+var audioOpen = new Audio(src= "assets/images/song.mp3")
 
 // General Wins aka Vader music
-var audio = new Audio(src= "assets/images/music.MP3") 
+var audio = new Audio(src= "assets/images/music.mp3") 
  //Attack sound
- var audioSaber = new Audio(src= "assets/images/saber.MP3")
- var audioBlasters = new Audio(src= "assets/images/blasters.MP3")
+ var audioSaber = new Audio(src= "assets/images/saber.mp3")
+ var audioBlasters = new Audio(src= "assets/images/blasters.mp3")
 
  $("#healtho").text("health: " + obi.health);
  $("#healthg").text("health: " + general.health);
