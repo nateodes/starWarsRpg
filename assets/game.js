@@ -84,7 +84,7 @@ var general = {
 //Sound effects
 
 // var audioOpen = new Audio(src= "assets/images/song.mp3")
-var audioOpen = new Audio(src= "https://raw.githubusercontent.com/nateodes/starWarsRpg/master/vendor/assets/images/open.mp3")
+var audioOpen = new Audio(src= "https://raw.githubusercontent.com/nateodes/starWarsRpg/master/assets/images/song.mp3")
 // General Wins aka Vader music
 var audio = new Audio(src= "assets/images/music.mp3") 
 
