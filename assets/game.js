@@ -105,18 +105,18 @@ if (general.charSelect === false && obi.charSelect === false && anakin.charSelec
 		audioBlasters.play();
 	audioOpen.pause();
 	// $("#anakin").clone().appendTo(".selected");
-	$(".image1").animate({top: '+=250px'}, 2000);
-	$(".image1").animate({left: '+=250px'}, 4000);
+	$(".image1").animate({top: '+=250px'}, 1000);
+	$(".image1").animate({left: '+=250px'}, 2000);
 	anakin.charSelect = true;
 	$("#anakin").addClass("chosen");
 	
-	$(".image2").animate({top: '+=500px'}, 2000);
+	$(".image2").animate({top: '+=500px'}, 1000);
 	// $("#obi").clone().appendTo(".defenders");
 	$("#obi").addClass("defender");
 	obi.defender = true;
 
 	// $("#general").clone().appendTo(".defenders");
-	$(".image3").animate({top: '+=500px'}, 2000);
+	$(".image3").animate({top: '+=500px'}, 1000);
 	
 
 }
@@ -127,20 +127,20 @@ if (general.charSelect === false && obi.charSelect === false && anakin.charSelec
 if (anakin.charSelect === false && general.charSelect === false && obi.charSelect === false) {
 	$("#obi").on("click", function () {
 		audioBlasters.play();
-		$(".image2").animate({top: '+=250px'}, 2000);
+		$(".image2").animate({top: '+=250px'}, 1000);
 		audioOpen.pause();
 
 	// $("#obi").clone().appendTo(".selected");
 	obi.charSelect = true;
 	$("#obi").addClass("chosen");
 	
-	$(".image1").animate({top: '+=500px'}, 2000);
+	$(".image1").animate({top: '+=500px'}, 1000);
 	// $("#anakin").clone().appendTo(".defenders");
 	anakin.defender = true; 
 	$("#anakin").addClass("defender");
 
-	$(".image3").animate({top: '+=500px'}, 2000);
-	$(".image3").animate({right: '+=100px'}, 4000);
+	$(".image3").animate({top: '+=500px'}, 1000);
+	$(".image3").animate({right: '+=100px'}, 2000);
 	// $("#general").clone().appendTo(".defenders");
 	
 }
@@ -150,19 +150,19 @@ if (anakin.charSelect === false && general.charSelect === false && obi.charSelec
 if (anakin.charSelect === false && obi.charSelect === false && general.charSelect === false) {
 	$("#general").on("click", function () {
 		audioBlasters.play();
-		$(".image3").animate({top: '+=250px'}, 2000);
-		$(".image3").animate({right: '+=100px'}, 4000);
+		$(".image3").animate({top: '+=250px'}, 1000);
+		$(".image3").animate({right: '+=100px'}, 2000);
 		audioOpen.pause();
 	// $("#general").clone().appendTo(".selected");
 	general.charSelect = true;
 	$("#general").addClass("chosen");
 
-	$(".image2").animate({top: '+=500px'}, 2000);
+	$(".image2").animate({top: '+=500px'}, 1000);
 	// $("#obi").clone().appendTo(".defenders");
 	obi.defender = true;
 	$("#obi").addClass("defender");
 	
-	$(".image1").animate({top: '+=500px'}, 2000);
+	$(".image1").animate({top: '+=500px'}, 1000);
 	// $("#anakin").clone().appendTo(".defenders");
 	
 }
@@ -705,5 +705,5 @@ $(".reset").on("click", function () {
 	$("#health2").animate({value: obi.health}, "very slow");
 	$("#health3").animate({value: general.health}, "very slow");
 
-
+	$(".attack").animate({ opacity: "1" });
 })
